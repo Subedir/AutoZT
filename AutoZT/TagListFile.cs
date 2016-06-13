@@ -629,7 +629,7 @@ namespace AutoZT
             /* this regexpattern variable is used to extract any any characters before a period eg: 
              * from the string "CMNU1.FEEDTURBIDITY" You extract the string "CMNU1"             
              */
-            string regexPattern = @"[a-zA-Z0-9]+(?=\.)";
+            string regexPattern = @".+(?=\.)";
 
             DataTable opcTable = m_excelData.Copy();
             //merge IGS table into the Excel table 
