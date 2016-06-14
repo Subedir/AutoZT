@@ -190,6 +190,100 @@ namespace AutoZT
             }                     
 
         }
+
+
+        public void ReadDataFromExcelToDataTableForPointType()
+        {
+            Excel.Range AllCells = null;
+            Excel.Range lastCell = null;
+            Excel.Range row = null;
+
+            try
+            {
+                //start Excel
+                StartExcel();
+
+                //open workbook
+                TagListWorkbook = m_excelObj.Workbooks.Open(m_pathToExcelDocument, 0, true, 5,
+                        "", "", true, Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, false, false);
+
+                //create datatable with two columns
+                m_excelData = new DataTable("TableData");
+                m_excelData.Columns.Add("Tag Name", Type.GetType("System.String"));
+                m_excelData.Columns.Add("Address", Type.GetType("System.String"));
+
+
+                //Set Tag Name column as primary key
+                m_excelData.Columns["Tag Name"].Unique = true;
+                m_excelData.PrimaryKey = new DataColumn[] { m_excelData.Columns["Tag Name"] };
+
+                //Get the sheets 
+                sheets = TagListWorkbook.Worksheets;
+                //total number of sheets
+                int TotalSheets = sheets.Count;
+                //instantiate string of worksheet array
+                worksheetNames = new string[TotalSheets];
+
+                //Read columns c6 to d6 from all the sheets and add into Data table
+                for (int i = 1; i <= TotalSheets; i++)
+                {
+                    //get each sheet
+                    worksheet = (Excel.Worksheet)sheets.get_Item(i);
+                    //store sheet names to be used later for database setup
+                    worksheetNames[i - 1] = worksheet.Name;
+
+                    AllCells = worksheet.get_Range("C6", "D6");
+                    //lastCell = null;                    
+                    //Excel.Range AllCells = worksheet.get_Range("C6", "D6");
+                    //Excel.Range lastCell = null;
+
+                    //get the last cell for column c6, d6
+                    lastCell = AllCells.SpecialCells(Excel.XlCellType.xlCellTypeLastCell, Missing.Value);
+
+                    //read data starting from column C and row 6 and to D6 to the last cell of these columns
+                    for (int j = 6; j <= lastCell.Row; j++)
+                    {
+                        row = worksheet.get_Range("C" + j.ToString(), "D" + j.ToString());
+                        Array strs = (System.Array)row.Cells.Value2;
+                        //convert values to array of strings
+                        string[] strsArray = ConvertToStringArray(strs);
+                        //add the array of strings to the datatable m_excelData
+                        m_excelData.Rows.Add(strsArray);
+                        //delete 'Blank' row
+                        DeleteBlankRowsInDataTable();
+                    }
+                }
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                //Clean up any references
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+                //clean up Excel objects
+                Release(AllCells);
+                Release(lastCell);
+                Release(row);
+                Release(worksheet);
+                Release(sheets);
+                //Close the workbook
+                TagListWorkbook.Close(false, Type.Missing, Type.Missing);
+                Release(TagListWorkbook);
+
+                //m_excelObj.Application.Quit(); -
+                m_excelObj.Quit();
+                Release(m_excelObj);
+                m_excelObj = null;
+
+            }
+
+        }
+
+
         /// <summary>
         /// Add the values from the excel file to an array of string
         /// </summary>
