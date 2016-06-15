@@ -21,18 +21,18 @@ namespace AutoZT
             txtSiteBox.Enabled = false;
 
             //datalogging software
-            comboSoftware.Enabled = false;
-            comboSoftware.Visible = false;
+            //comboSoftware.Enabled = false;
+            //comboSoftware.Visible = false;
             
             //IFix 
-            txtChannelBox.Enabled = false;
-            txtDatabasebox.Enabled = false;
-            txtPLCBox.Enabled = false;
-            buttonIfixDatabase.Enabled = false;
-            buttonIGS.Enabled = false;
-            buttonIfixScript.Enabled = false;
-            buttonIfixScript.Visible = false;
-            comboDriverBox.Enabled = false;
+           // txtChannelBox.Enabled = false;
+           // txtDatabasebox.Enabled = false;
+           // txtPLCBox.Enabled = false;
+           // buttonIfixDatabase.Enabled = false;
+           // buttonIGS.Enabled = false;
+          //  buttonIfixScript.Enabled = false;
+          //  buttonIfixScript.Visible = false;
+           // comboDriverBox.Enabled = false;
 
             //OPC
             buttonOPCFile.Enabled = false;
@@ -42,11 +42,11 @@ namespace AutoZT
             //hide controls not used
 
             //IFix
-            txtChannelBox.Visible = false;
-            txtDatabasebox.Visible = false;
-            txtPLCBox.Visible = false;
-            buttonIfixDatabase.Visible = false;
-            buttonIfixScript.Visible = false;
+            //txtChannelBox.Visible = false;
+            //txtDatabasebox.Visible = false;
+            //txtPLCBox.Visible = false;
+            //buttonIfixDatabase.Visible = false;
+            //buttonIfixScript.Visible = false;
             comboDriverBox.Visible = false;
             
             //IGS
@@ -59,27 +59,27 @@ namespace AutoZT
             txtPLCBoxOPC.Visible = false;
             
             //labels
-            labelChannelName.Visible = false;
-            labelDatabaseName.Visible = false;
-            labelPLCName.Visible = false;
+            //labelChannelName.Visible = false;
+           // labelDatabaseName.Visible = false;
+           // labelPLCName.Visible = false;
             //OPC
             labelCHNameOPC.Visible = false;
             labelPLCNameOPC.Visible = false;
 
-           
+
             //Database Tab
-            comboSoftwareBox.Enabled = false;
-            comboSiteAssignedBox.Enabled = false;
-            txtAObox.Enabled = false;
-            txtSiteNameBox.Enabled = false;
-            NoCassPerTrain.Enabled = false;
-            NoModulesPerCass.Enabled = false;
-            NoAreaPerModule.Enabled = false;
-            comboflowrateUnitsBox.Enabled = false;
-            comboTemperatureBox.Enabled = false;
-            buttonSqlScript.Enabled = false;
-            radioSquareFeet.Enabled = false;
-            radioSquareMetres.Enabled = false;
+            //comboSoftwareBox.Enabled = false;
+            // comboSiteAssignedBox.Enabled = false;
+            //txtAObox.Enabled = false;
+            // txtSiteNameBox.Enabled = false;
+            // NoCassPerTrain.Enabled = false;
+            //NoModulesPerCass.Enabled = false;
+            //NoAreaPerModule.Enabled = false;
+            //comboflowrateUnitsBox.Enabled = false;
+            //comboTemperatureBox.Enabled = false;
+            //buttonSqlScript.Enabled = false;
+            //radioSquareFeet.Enabled = false;
+            //radioSquareMetres.Enabled = false;
       
         }
 
@@ -115,53 +115,73 @@ namespace AutoZT
                     txtAONumberBox.Focus();
                     txtSiteBox.Enabled = true;
 
+                    /*
+                    // enable IGS and OPC buttons
+                    buttonIGS.Enabled = true;
+                    buttonIGS.Visible = true;
+                    comboDriverBox.Enabled = false;
+                    comboDriverBox.Visible = false;
+
+                    //opc
+                    buttonOPCFile.Visible = true;
+                    buttonOPCFile.Enabled = true;
+                    txtChannelBoxOPC.Enabled = true;
+                    txtChannelBoxOPC.Visible = true;
+                    txtPLCBoxOPC.Enabled = true;
+                    txtPLCBoxOPC.Visible = true;
+                    //labels
+                    labelCHNameOPC.Visible = true;
+                    labelPLCNameOPC.Visible = true;
+                    */
+
+
                     //datalogging software
-                    comboSoftware.Enabled = true;
-                    comboSoftware.Visible = true;
+                    //comboSoftware.Enabled = true;
+                    //comboSoftware.Visible = true;
                     //comboDriverBox.Enabled = true;
                     //comboDriverBox.Visible = true;
                     //Blackbox Tab
-                    txtChannelBox.Enabled = false;
-                    txtDatabasebox.Enabled = false;
-                    txtPLCBox.Enabled = false;
-                    buttonIfixDatabase.Enabled = false;
+                    //txtChannelBox.Enabled = false;
+                    // txtDatabasebox.Enabled = false;
+                    //txtPLCBox.Enabled = false;
+                    //buttonIfixDatabase.Enabled = false;
                     buttonIGS.Enabled = false;
-                    buttonIfixScript.Enabled = false;
-                    buttonIfixScript.Visible = false;
+                    //buttonIfixScript.Enabled = false;
+                    // buttonIfixScript.Visible = false;
                     buttonOPCFile.Enabled = false;
 
 
                     //hide controls not used
-                    txtChannelBox.Visible = false;
-                    txtDatabasebox.Visible = false;
-                    txtPLCBox.Visible = false;
+                    // txtChannelBox.Visible = false;
+                    // txtDatabasebox.Visible = false;
+                    //txtPLCBox.Visible = false;
                     buttonIGS.Visible = false;
-                    buttonIfixDatabase.Visible = false;
-                    buttonIfixScript.Visible = false;
-                    
+                    //buttonIfixDatabase.Visible = false;
+                    // buttonIfixScript.Visible = false;
+
                     //labels
-                    labelChannelName.Visible = false;
-                    labelDatabaseName.Visible = false;
-                    labelPLCName.Visible = false;
-                 
-                                      
+                    // labelChannelName.Visible = false;
+                    // labelDatabaseName.Visible = false;
+                    //labelPLCName.Visible = false;
+
+
                     //Activate Database fields
                     //Database Tab
-                    comboSoftwareBox.Enabled = true;
-                    comboSiteAssignedBox.Enabled = true;
-                    txtAObox.Enabled = true;
-                    txtSiteNameBox.Enabled = true;
-                    NoCassPerTrain.Enabled = true;
-                    NoModulesPerCass.Enabled = true;
-                    NoAreaPerModule.Enabled = true;
-                    comboflowrateUnitsBox.Enabled = true;
-                    comboTemperatureBox.Enabled = true;
-                    buttonSqlScript.Enabled = true;
-                    radioSquareFeet.Enabled = true;
-                    radioSquareMetres.Enabled = true;
-                    
+                    // comboSoftwareBox.Enabled = true;
+                    //comboSiteAssignedBox.Enabled = true;
+                    //txtAObox.Enabled = true;
+                    //txtSiteNameBox.Enabled = true;
+                    //NoCassPerTrain.Enabled = true;
+                    // NoModulesPerCass.Enabled = true;
+                    //NoAreaPerModule.Enabled = true;
+                    //comboflowrateUnitsBox.Enabled = true;
+                    //comboTemperatureBox.Enabled = true;
+                    //buttonSqlScript.Enabled = true;
+                    //radioSquareFeet.Enabled = true;
+                    // radioSquareMetres.Enabled = true;
+
                 }
-                
+
 
                 catch (System.IO.FileNotFoundException fnfe)
                 {
@@ -183,6 +203,8 @@ namespace AutoZT
             ab.ShowDialog();
         }
 
+        /*
+        
         private void buttonIFIX_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtSiteBox.Text))
@@ -282,6 +304,8 @@ namespace AutoZT
 
         }
 
+
+        */
         private void buttonIGS_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtSiteBox.Text))
@@ -291,13 +315,14 @@ namespace AutoZT
                 return;
 
             }
+            /*
             if (string.IsNullOrEmpty((string)comboSoftware.SelectedItem))
             {
                 MessageBox.Show("Please select the software used.");
                 comboSoftware.Focus();
                 return;
             }
-
+            */
             saveFile.FileName = txtAONumberBox.Text + txtSiteBox.Text + "IGSDriver";
             saveFile.Filter = "CSV file (*.csv)|*.csv";
             System.Windows.Forms.DialogResult result;
@@ -351,6 +376,7 @@ namespace AutoZT
             }
         }
 
+    /*    
         private void buttonSqlScript_Click(object sender, EventArgs e)
         {
             //AO can be blank as there are sites that do not have an AO number
@@ -450,6 +476,11 @@ namespace AutoZT
             }
         }
 
+
+
+        */
+
+    /*
         private void comboflowrateUnitsBox_SelectionChangeCommitted(object sender, EventArgs e)
         {
             if (comboflowrateUnitsBox.SelectedItem.ToString() == "No FlowRates")
@@ -508,6 +539,8 @@ namespace AutoZT
                               
                 
             }
+
+
             else if (comboDriverBox.SelectedItem.ToString( )== "GE9")
             {
                 buttonIGS.Enabled = false;
@@ -546,6 +579,10 @@ namespace AutoZT
             }
         }
 
+
+        */
+
+          
         private void comboSoftware_SelectionChangeCommitted(object sender, EventArgs e)
         {
             if (comboSoftware.SelectedItem.ToString() == "IFIX")
@@ -587,23 +624,25 @@ namespace AutoZT
                 labelPLCNameOPC.Visible = true;
 
                 //IFIX
-                txtChannelBox.Enabled = false;
-                txtPLCBox.Enabled = false;
-                txtDatabasebox.Enabled = false;
-                buttonIfixDatabase.Enabled = false;
+                //txtChannelBox.Enabled = false;
+                //txtPLCBox.Enabled = false;
+                //txtDatabasebox.Enabled = false;
+               // buttonIfixDatabase.Enabled = false;
 
                 //hide controls not used
-                txtChannelBox.Visible = false;
-                txtDatabasebox.Visible = false;
-                txtPLCBox.Visible = false;
-                buttonIfixDatabase.Visible = false;
+                //txtChannelBox.Visible = false;
+                //txtDatabasebox.Visible = false;
+                //txtPLCBox.Visible = false;
+                //buttonIfixDatabase.Visible = false;
 
                 //labels
-                labelChannelName.Visible = false;
-                labelDatabaseName.Visible = false;
-                labelPLCName.Visible = false;
+                //labelChannelName.Visible = false;
+                //labelDatabaseName.Visible = false;
+               // labelPLCName.Visible = false;
             }
         }
+
+        
 
         private void buttonOPCFile_Click(object sender, EventArgs e)
         {
@@ -669,5 +708,17 @@ namespace AutoZT
         {
 
         }
+
+        private void comboDriverBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboSoftware_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
 }
