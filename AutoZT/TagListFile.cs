@@ -26,6 +26,18 @@ namespace AutoZT
         private Excel.Worksheet worksheet = null;
         private string[] worksheetNames = null;
 
+        // the following set of variables is used to get the data points
+
+      
+        private Excel.Application m_excelObj2 = null;
+        //datatable holds excel data
+        private DataTable m_excelData2 = null;
+        private string m_pathToExcelDocument2 = "";
+        private Excel.Workbook TagListWorkbook2 = null;
+        private Excel.Sheets sheets2 = null;
+        private Excel.Worksheet worksheet2 = null;
+        private string[] worksheetNames2 = null;
+
 
         /// <summary>
         /// Constructor takes the path of the excel file
@@ -119,6 +131,9 @@ namespace AutoZT
                 m_excelData = new DataTable("TableData");
                 m_excelData.Columns.Add("Tag Name", Type.GetType("System.String"));
                 m_excelData.Columns.Add("Address", Type.GetType("System.String"));
+                m_excelData.Columns.Add("Units", Type.GetType("System.String"));
+                m_excelData.Columns.Add("DataType", Type.GetType("System.String"));
+
 
 
                 //Set Tag Name column as primary key
@@ -140,18 +155,19 @@ namespace AutoZT
                     //store sheet names to be used later for database setup
                     worksheetNames[i - 1] = worksheet.Name;
 
-                    AllCells = worksheet.get_Range("C6", "D6");
+                    AllCells = worksheet.get_Range("C6", "F6");
+                    //AllCells = worksheet.get_Range("C6", "D6");
                     //lastCell = null;                    
                     //Excel.Range AllCells = worksheet.get_Range("C6", "D6");
                     //Excel.Range lastCell = null;
-                    
+
                     //get the last cell for column c6, d6
                     lastCell = AllCells.SpecialCells(Excel.XlCellType.xlCellTypeLastCell, Missing.Value);
 
                     //read data starting from column C and row 6 and to D6 to the last cell of these columns
                     for (int j = 6; j <= lastCell.Row; j++)
                     {
-                        row = worksheet.get_Range("C" + j.ToString(), "D" + j.ToString());
+                        row = worksheet.get_Range("C" + j.ToString(), "F" + j.ToString());
                         Array strs = (System.Array)row.Cells.Value2;
                         //convert values to array of strings
                         string[] strsArray = ConvertToStringArray(strs);
@@ -191,7 +207,7 @@ namespace AutoZT
 
         }
 
-
+/*
         public void ReadDataFromExcelToDataTableForPointType()
         {
             Excel.Range AllCells = null;
@@ -204,35 +220,35 @@ namespace AutoZT
                 StartExcel();
 
                 //open workbook
-                TagListWorkbook = m_excelObj.Workbooks.Open(m_pathToExcelDocument, 0, true, 5,
+                TagListWorkbook2 = m_excelObj2.Workbooks.Open(m_pathToExcelDocument, 0, true, 5,
                         "", "", true, Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, false, false);
 
                 //create datatable with two columns
-                m_excelData = new DataTable("TableData");
-                m_excelData.Columns.Add("Tag Name", Type.GetType("System.String"));
-                m_excelData.Columns.Add("Address", Type.GetType("System.String"));
+                m_excelData2 = new DataTable("TableData");
+                m_excelData2.Columns.Add("Tag Name", Type.GetType("System.String"));
+                m_excelData2.Columns.Add("Point Type", Type.GetType("System.String"));
 
 
                 //Set Tag Name column as primary key
-                m_excelData.Columns["Tag Name"].Unique = true;
-                m_excelData.PrimaryKey = new DataColumn[] { m_excelData.Columns["Tag Name"] };
+                m_excelData2.Columns["Tag Name"].Unique = true;
+                m_excelData2.PrimaryKey = new DataColumn[] { m_excelData2.Columns["Tag Name"] };
 
                 //Get the sheets 
-                sheets = TagListWorkbook.Worksheets;
+                sheets2 = TagListWorkbook2.Worksheets;
                 //total number of sheets
-                int TotalSheets = sheets.Count;
+                int TotalSheets = sheets2.Count;
                 //instantiate string of worksheet array
-                worksheetNames = new string[TotalSheets];
+                worksheetNames2 = new string[TotalSheets];
 
                 //Read columns c6 to d6 from all the sheets and add into Data table
                 for (int i = 1; i <= TotalSheets; i++)
                 {
                     //get each sheet
-                    worksheet = (Excel.Worksheet)sheets.get_Item(i);
+                    worksheet2 = (Excel.Worksheet)sheets2.get_Item(i);
                     //store sheet names to be used later for database setup
-                    worksheetNames[i - 1] = worksheet.Name;
+                    worksheetNames2[i - 1] = worksheet.Name;
 
-                    AllCells = worksheet.get_Range("C6", "D6");
+                    AllCells = worksheet2.get_Range("C6", "F6");
                     //lastCell = null;                    
                     //Excel.Range AllCells = worksheet.get_Range("C6", "D6");
                     //Excel.Range lastCell = null;
@@ -243,12 +259,12 @@ namespace AutoZT
                     //read data starting from column C and row 6 and to D6 to the last cell of these columns
                     for (int j = 6; j <= lastCell.Row; j++)
                     {
-                        row = worksheet.get_Range("C" + j.ToString(), "D" + j.ToString());
+                        row = worksheet2.get_Range("C" + j.ToString(), "F" + j.ToString());
                         Array strs = (System.Array)row.Cells.Value2;
                         //convert values to array of strings
                         string[] strsArray = ConvertToStringArray(strs);
-                        //add the array of strings to the datatable m_excelData
-                        m_excelData.Rows.Add(strsArray);
+                        //add the array of strings to the datatable m_excelData2
+                        m_excelData2.Rows.Add(strsArray);
                         //delete 'Blank' row
                         DeleteBlankRowsInDataTable();
                     }
@@ -268,20 +284,22 @@ namespace AutoZT
                 Release(AllCells);
                 Release(lastCell);
                 Release(row);
-                Release(worksheet);
-                Release(sheets);
+                Release(worksheet2);
+                Release(sheets2);
                 //Close the workbook
-                TagListWorkbook.Close(false, Type.Missing, Type.Missing);
-                Release(TagListWorkbook);
+                TagListWorkbook2.Close(false, Type.Missing, Type.Missing);
+                Release(TagListWorkbook2);
 
-                //m_excelObj.Application.Quit(); -
-                m_excelObj.Quit();
-                Release(m_excelObj);
-                m_excelObj = null;
+                //m_excelObj2.Application.Quit(); -
+                m_excelObj2.Quit();
+                Release(m_excelObj2);
+                m_excelObj2 = null;
 
             }
 
         }
+
+*/
 
 
         /// <summary>
@@ -730,7 +748,7 @@ namespace AutoZT
 
             //remove address column that we don't need
             opcTable.Columns.RemoveAt(1);
-            
+
             //merge tables
             opcTable.Merge(OpcHeadingTable(), false, MissingSchemaAction.Add);
 
@@ -848,6 +866,31 @@ namespace AutoZT
                 setRow["Alarm File Name"] = "\"Alarm\"";
                 setRow["Append Date to Alarm File Name"] = "#TRUE#";
 
+
+                /// <summary>
+                /// sets the PointType in the OPC file based on an input of DataType from the taglist
+                /// 
+                /// Boolean = 1 
+                /// Char = 0
+                /// Byte = 0
+                /// Short = 0
+                /// Word = 0
+                /// Long = 0
+                /// DWord = 0
+                /// LLong = 0
+                /// QWord = 0
+                /// Float = 0
+                /// Double = 0
+                /// String = 0
+                /// BCD = 0
+                /// LBCD = 0
+                /// Date = 0
+                /// </summary>
+
+                setRow["Point Type"] = setPointType(setRow["DataType"].ToString());
+
+                // set the "Point Type" based on the F column which is the data type
+
             }
 
             foreach (DataRow setRow in opcTable.Rows)
@@ -855,6 +898,7 @@ namespace AutoZT
                 //add gateway server to the tag name of IGS tag
                 setRow["OPC Item"] = "\"" + "Intellution.IntellutionGatewayOPCServer\\" + channelName + "." + plcName + "." + setRow["OPC Item"] + "\"";
             }
+
 
             //set data ready tags to digital
             SetRowValueOfDataTable(opcTable, "OPC Item", "ready", "Point Type", "1");
@@ -864,12 +908,35 @@ namespace AutoZT
             
             //set Trend data file rows to blank as we don't want to log data ready bits
             SetRowValueOfDataTable(opcTable, "OPC Item", "ready", "Trend Data File", "");
-                     
+
+
+            // Deletes the Units and the DataType Columns that we dont need
+            opcTable.Columns.RemoveAt(1);
+            opcTable.Columns.RemoveAt(1);
+
             //write igstable to csv file
             WriteDataTableToCsvFile(absolutePathAndFileName, opcTable, true, false);
 
+
+            // this removed the Units column which was 
+
         }
 
+
+        private int setPointType(string DataType)
+        {
+            if (DataType.Equals("Boolean",StringComparison.CurrentCultureIgnoreCase))
+            {
+                return 1;
+            }
+
+            else
+            {
+                return 0;
+
+            }
+
+        }
 
         /// <summary>
         /// Sets the row value in the table to one specified
@@ -6469,10 +6536,9 @@ namespace AutoZT
 
                   //declare variables
             DataTable databaseTagsTable = m_excelData.Copy();
-
+            
             //delete rows that have digital tags
             DataRow[] getDigitalRows = null;
-
             //find the digital rows that have "ready"
             getDigitalRows = FindRowsInDataTable(databaseTagsTable, "ready");
 
