@@ -115,7 +115,7 @@ namespace AutoZT
                     txtAONumberBox.Focus();
                     txtSiteBox.Enabled = true;
 
-                    /*
+                    
                     // enable IGS and OPC buttons
                     buttonIGS.Enabled = true;
                     buttonIGS.Visible = true;
@@ -132,7 +132,7 @@ namespace AutoZT
                     //labels
                     labelCHNameOPC.Visible = true;
                     labelPLCNameOPC.Visible = true;
-                    */
+
 
 
                     //datalogging software
@@ -145,17 +145,27 @@ namespace AutoZT
                     // txtDatabasebox.Enabled = false;
                     //txtPLCBox.Enabled = false;
                     //buttonIfixDatabase.Enabled = false;
-                    buttonIGS.Enabled = false;
+
+
+                    //buttonIGS.Enabled = false;
+
+
                     //buttonIfixScript.Enabled = false;
                     // buttonIfixScript.Visible = false;
-                    buttonOPCFile.Enabled = false;
+
+
+                    //buttonOPCFile.Enabled = false;
 
 
                     //hide controls not used
                     // txtChannelBox.Visible = false;
                     // txtDatabasebox.Visible = false;
                     //txtPLCBox.Visible = false;
-                    buttonIGS.Visible = false;
+
+
+                    //buttonIGS.Visible = false;
+                    
+                    
                     //buttonIfixDatabase.Visible = false;
                     // buttonIfixScript.Visible = false;
 
@@ -582,6 +592,7 @@ namespace AutoZT
 
         */
 
+            /*
           
         private void comboSoftware_SelectionChangeCommitted(object sender, EventArgs e)
         {
@@ -642,7 +653,7 @@ namespace AutoZT
             }
         }
 
-        
+        */
 
         private void buttonOPCFile_Click(object sender, EventArgs e)
         {

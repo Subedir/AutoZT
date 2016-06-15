@@ -51,7 +51,6 @@ namespace AutoZT
             this.txtPLCBoxOPC = new System.Windows.Forms.TextBox();
             this.txtChannelBoxOPC = new System.Windows.Forms.TextBox();
             this.buttonOPCFile = new System.Windows.Forms.Button();
-            this.comboSoftware = new System.Windows.Forms.ComboBox();
             this.fileMenu.SuspendLayout();
             this.tabConTrolSetup.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -162,7 +161,6 @@ namespace AutoZT
             // groupBoxSiteName
             // 
             this.groupBoxSiteName.BackColor = System.Drawing.SystemColors.Control;
-            this.groupBoxSiteName.Controls.Add(this.comboSoftware);
             this.groupBoxSiteName.Controls.Add(this.txtSiteBox);
             this.groupBoxSiteName.Controls.Add(this.txtAONumberBox);
             this.groupBoxSiteName.Controls.Add(this.label2);
@@ -264,20 +262,6 @@ namespace AutoZT
             this.buttonOPCFile.UseVisualStyleBackColor = true;
             this.buttonOPCFile.Click += new System.EventHandler(this.buttonOPCFile_Click);
             // 
-            // comboSoftware
-            // 
-            this.comboSoftware.FormattingEnabled = true;
-            this.comboSoftware.Items.AddRange(new object[] {
-            "IFIX",
-            "OPC Trend"});
-            this.comboSoftware.Location = new System.Drawing.Point(61, 131);
-            this.comboSoftware.Name = "comboSoftware";
-            this.comboSoftware.Size = new System.Drawing.Size(501, 21);
-            this.comboSoftware.TabIndex = 2;
-            this.comboSoftware.Text = "Select the data logging software...";
-            this.comboSoftware.SelectedIndexChanged += new System.EventHandler(this.comboSoftware_SelectedIndexChanged);
-            this.comboSoftware.SelectionChangeCommitted += new System.EventHandler(this.comboSoftware_SelectionChangeCommitted);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -327,7 +311,6 @@ namespace AutoZT
         private System.Windows.Forms.Label labelPLCNameOPC;
         private System.Windows.Forms.Label labelCHNameOPC;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.ComboBox comboSoftware;
     }
 }
 
