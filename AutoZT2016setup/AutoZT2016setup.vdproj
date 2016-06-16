@@ -15,6 +15,12 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_071092C229F340128C831A80D9E786EB"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_0D4EDFD4A8FF1B3B22C57592E4D886C6"
         "OwnerKey" = "8:_3E7666EAA4C9D2C178FF2D8C348152DA"
         "MsmSig" = "8:_UNDEFINED"
@@ -148,6 +154,26 @@
         }
         "File"
         {
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_071092C229F340128C831A80D9E786EB"
+            {
+            "SourcePath" = "8:..\\..\\..\\..\\Work Files\\Programming\\AutoZT Program\\AutoZT Working Project\\AutoZT\\AutoZT\\Tools.ico"
+            "TargetName" = "8:Tools.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_BB7FE9240F5C498BA090EF1A82BCDC1F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_0D4EDFD4A8FF1B3B22C57592E4D886C6"
             {
             "AssemblyRegister" = "3:1"
@@ -340,7 +366,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:AutoZT2016setup"
         "ProductCode" = "8:{FFD7B752-8E5A-43AF-9EA9-4F5501490EA2}"
-        "PackageCode" = "8:{B0E15B0F-CC2A-4AE6-A716-4C8F94E85107}"
+        "PackageCode" = "8:{E2D1A52F-5366-4129-93B8-F98BE1248176}"
         "UpgradeCode" = "8:{698F2B2A-66E7-4C4E-9572-19E33945DA0B}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -462,7 +488,7 @@
         {
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_240C176984DE4D0FA158C7D72D28D523"
             {
-            "Name" = "8:AutoZT2016 (Active)"
+            "Name" = "8:AutoZT2016"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
@@ -471,12 +497,12 @@
             "Target" = "8:_30DC0B8492154E4284A2F2BC5987DC47"
             "Folder" = "8:_2027AA438579499586A3DFC4F33DAA21"
             "WorkingFolder" = "8:_BB7FE9240F5C498BA090EF1A82BCDC1F"
-            "Icon" = "8:"
+            "Icon" = "8:_071092C229F340128C831A80D9E786EB"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_6C7D6A09F1414FF68526ABDEE8D4FD71"
             {
-            "Name" = "8:AutoZT2016 (Active)"
+            "Name" = "8:AutoZT2016"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
@@ -485,7 +511,7 @@
             "Target" = "8:_30DC0B8492154E4284A2F2BC5987DC47"
             "Folder" = "8:_76BDD456E24C4145B66444FF2A0F7193"
             "WorkingFolder" = "8:_BB7FE9240F5C498BA090EF1A82BCDC1F"
-            "Icon" = "8:"
+            "Icon" = "8:_071092C229F340128C831A80D9E786EB"
             "Feature" = "8:"
             }
         }
