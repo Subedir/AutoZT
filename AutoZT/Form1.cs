@@ -90,7 +90,7 @@ namespace AutoZT
             Application.Exit();
         }
         /// <summary>
-        /// Opens an Excel file and enables controls.
+        /// Opens an Excel file and enables controls.how to 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
