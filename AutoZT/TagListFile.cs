@@ -26,18 +26,6 @@ namespace AutoZT
         private Excel.Worksheet worksheet = null;
         private string[] worksheetNames = null;
 
-        // the following set of variables is used to get the data points
-
-      
-        private Excel.Application m_excelObj2 = null;
-        //datatable holds excel data
-        private DataTable m_excelData2 = null;
-        private string m_pathToExcelDocument2 = "";
-        private Excel.Workbook TagListWorkbook2 = null;
-        private Excel.Sheets sheets2 = null;
-        private Excel.Worksheet worksheet2 = null;
-        private string[] worksheetNames2 = null;
-
 
         /// <summary>
         /// Constructor takes the path of the excel file
@@ -689,6 +677,7 @@ namespace AutoZT
             DataTable igsTable = m_excelData.Copy();
             //merge IGS table into the Excel table 
 
+
             igsTable.Merge(IgsHeadingTable(), false, MissingSchemaAction.Add);
 
             //fill the rest of the columns        
@@ -704,7 +693,18 @@ namespace AutoZT
                 }
 
                 //Set DataType column 
-                setRow["Data Type"] = "Float";
+                //setRow["Data Type"] = "Float";
+                // checks to see if the Data Type column has "Blank" and if it does then it populate the Data Type to "Float" by default
+                // else it will populate with the DataType which is coming directly from the Taglist
+                if (setRow["DataType"].ToString().Equals("Blank", StringComparison.CurrentCultureIgnoreCase)) 
+                {
+                    setRow["Data Type"] = "Float";
+                }
+                else
+                {
+                    setRow["Data Type"] = setRow["DataType"];
+                }
+
                 //Set Respect Data type
                 setRow["Respect Data Type"] = 1;
                 //Set Client Access
@@ -728,6 +728,11 @@ namespace AutoZT
             }
             //set Data Ready rows Data Type to Boolean          
             SetRowValueOfDataTable(igsTable, "Tag Name", "ready", "Data Type", "Boolean");
+
+
+            // remove the Units and DataType columns for the dataTable igsTable
+            igsTable.Columns.RemoveAt(2); // this removes the Units column 
+            igsTable.Columns.RemoveAt(2); // this removes the DataType column
 
             //write igstable to csv file
             WriteDataTableToCsvFile(absolutePathAndFileName, igsTable, true, false);
